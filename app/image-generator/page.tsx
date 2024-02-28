@@ -9,6 +9,7 @@ import React, { useState, useEffect } from "react";
 function Page({ searchParams }: any) {
   const [loading, setLoading] = useState(false); // State to manage loading status
   const [image, setImage] = useState<string>(""); // State to store images data
+  const [error, setError] = useState<string>("");
   // const number = searchParams?.number || 0;
   // const search = searchParams?.search;
   // useEffect(() => {
@@ -29,7 +30,6 @@ function Page({ searchParams }: any) {
 
   //   fetchData();
   // }, [searchParams, number]);
-  console.log(image);
   return (
     <section className="text-white m-3 border border-purple-950 p-5 rounded-xl  bg-black/15 backdrop-blur-lg flex flex-col gap-5 shadow-md shadow-blue-950 min-h-[80vh] max-h-full">
       <h1 className="text-4xl text-center font-extrabold text-purple-800">
@@ -39,7 +39,11 @@ function Page({ searchParams }: any) {
         Generate an image using Generative AI by describing what you want to
         see, all images are published publicly by default.
       </p>
-      <InputForm setImage={setImage} setLoading={setLoading} />
+      <InputForm
+        setImage={setImage}
+        setLoading={setLoading}
+        setError={setError}
+      />
       <section className=" flex gap-3 flex-wrap w-full">
         {loading ? (
           <div className="w-full">
@@ -48,7 +52,7 @@ function Page({ searchParams }: any) {
             </Skeleton>
           </div> // Render loading indicator while data is being fetched
         ) : (
-          <div className="w-full h-[50vh]  rounded-md relative">
+          <div className="w-full h-[50vh] flex  rounded-md relative">
             {image && (
               <Link href={image}>
                 <Image
@@ -59,6 +63,11 @@ function Page({ searchParams }: any) {
                   loading="lazy"
                 />
               </Link>
+            )}
+            {error && (
+              <p className="bg-gradient-to-tr from-black to-red-900  rounded-md text-white p-5  w-full h-fit">
+                {error}
+              </p>
             )}
           </div>
         )}

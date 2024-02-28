@@ -11,8 +11,9 @@ import { generateImage } from "@/util";
 type props = {
   setImage: Dispatch<SetStateAction<string>>;
   setLoading: Dispatch<SetStateAction<boolean>>;
+  setError: Dispatch<SetStateAction<string>>;
 };
-const InputForm = ({ setImage, setLoading }: props) => {
+const InputForm = ({ setImage, setLoading, setError }: props) => {
   // const searchParams = useSearchParams();
   // const pathname = usePathname();
   // const { replace } = useRouter();
@@ -28,12 +29,16 @@ const InputForm = ({ setImage, setLoading }: props) => {
   }
   const handleSubmit = async () => {
     setLoading(true);
-    const response = await generateImage({
+    const { status, message, data } = await generateImage({
       prompt: form.prompt,
     });
-    console.log(response);
-    setImage(response.url);
     setLoading(false);
+    if (status) {
+      setImage(data.url);
+    } else {
+      setError(message);
+    }
+    console.log(data);
   };
   // useEffect(() => {
   //   setTimeout(() => {

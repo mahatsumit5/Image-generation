@@ -17,12 +17,17 @@ export const generateImage = async (form: params) => {
       n: 1, // The number of images to generate
       quality: "hd",
       style: "natural",
-      response_format: "url",
+
       size: "1024x1024",
     });
     console.log(data);
-    return JSON.parse(JSON.stringify(data[0]));
+    return JSON.parse(
+      JSON.stringify({ status: true, message: "success", data: data[0] })
+    );
   } catch (error: any) {
     console.log(error.message);
+    return JSON.parse(
+      JSON.stringify({ status: false, message: error.message })
+    );
   }
 };
