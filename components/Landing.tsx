@@ -19,7 +19,7 @@ const Landing = () => {
           all free. The only limit is your imagination!
         </p>
         <button
-          className="rounded-full border-2 p-3 bg-black/50 border-purple-600"
+          className="rounded-full border-2 p-3 bg-black/50 border-purple-600 hover:shadow-lg shadow-slate-50"
           onClick={() => {
             navigate.push("/image-generator");
           }}
@@ -33,6 +33,7 @@ const Landing = () => {
           alt="img"
           fill
           className="object-cover overflow-hidden rounded-lg transition-all"
+          loading="lazy"
         />
       </div>
     </section>

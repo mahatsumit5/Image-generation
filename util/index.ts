@@ -11,6 +11,7 @@ export const generateImage = async (form: params) => {
       throw new Error("prompt and number is required");
     }
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+    setTimeout(() => {}, 10000);
     const { data } = await openai.images.generate({
       model: "dall-e-2",
       prompt: form.prompt,

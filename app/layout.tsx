@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "IGEN",
+  title: "Image Genration",
   description: "Generat your image by providing prompt ",
 };
 
