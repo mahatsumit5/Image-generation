@@ -6,8 +6,8 @@ import React from "react";
 const Landing = () => {
   const navigate = useRouter();
   return (
-    <section className="flex flex-col-reverse md:flex-row justify-between w-full h-[70vh] gap-5 border-b border-b-purple-950 pb-3">
-      <div className="w-full md:w-2/4 flex flex-col justify-center gap-2 items-center">
+    <section className="flex flex-col-reverse md:flex-row justify-between w-full  gap-5 border-b border-b-purple-950 pb-3">
+      <div className="w-full md:w-2/4 flex flex-col justify-center gap-8 items-start">
         <h1 className="font-extrabold text-7xl text-purple-700">
           Generate Image
         </h1>
@@ -27,13 +27,12 @@ const Landing = () => {
           AI Image Generator
         </button>
       </div>
-      <div className="w-full md:w-2/4 grid items-center h-full relative">
+      <div className="w-full md:w-2/4  h-[40vh] md:h-[70vh] relative">
         <Image
           src={"/source.png"}
           alt="img"
           fill
           className="object-cover overflow-hidden rounded-lg transition-all"
-          loading="lazy"
         />
       </div>
     </section>

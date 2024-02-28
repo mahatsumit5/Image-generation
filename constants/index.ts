@@ -23,6 +23,18 @@ export const question = [
     answer:
       " IGEN offers a range of paid plans, including Plus, Premium, and Team options. For larger corporations, an Enterprise plan is available, catering to users across the entire domain. Additionally, Pixlr provides the convenience of purchasing gift cards for hassle-free subscription gifting to friends or family.      Pixlr also extends its offerings to education with both free and paid plans tailored to educational needs. To learn more about our subscription plans, visit the Pricing page.",
   },
+  {
+    id: 5,
+    question: "How do I cancel my subscription?",
+    answer:
+      " You can cancel at any time in your My Account page. Once you cancel you’ll be able to access premium features until your subscription period has ended.",
+  },
+  {
+    id: 6,
+    question: "What is the refund policy?",
+    answer:
+      "IGEN is unable to process any refunds for your subscription once your payment has been processed. If you subscribed via a mobile app then all subscriptions are managed through your app store - to request a refund you’ll need to contact the store directly.",
+  },
 ];
 
 export const pricing = [
