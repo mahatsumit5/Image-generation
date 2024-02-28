@@ -29,6 +29,7 @@ const InputForm = ({ setImage, setLoading, setError }: props) => {
   }
   const handleSubmit = async () => {
     setLoading(true);
+    ("use server");
     const { status, message, data } = await generateImage({
       prompt: form.prompt,
     });
