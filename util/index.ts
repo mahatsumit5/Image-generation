@@ -12,7 +12,7 @@ export const generateImage = async (form: params) => {
     }
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
     const { data } = await openai.images.generate({
-      model: "dall-e-3",
+      model: "dall-e-2",
       prompt: form.prompt,
       n: Number(form.number), // The number of images to generate
       quality: "hd",
@@ -20,7 +20,7 @@ export const generateImage = async (form: params) => {
       response_format: "url",
       size: "1024x1024",
     });
-    return data;
+    return JSON.parse(JSON.stringify(data));
   } catch (error: any) {
     console.log(error.message);
   }

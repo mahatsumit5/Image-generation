@@ -11,15 +11,16 @@ function Page({ searchParams }: any) {
   const number = searchParams?.number || 0;
   const search = searchParams?.search;
   useEffect(() => {
-    async function fetchData() {
-      const search = searchParams?.search;
+    const search = searchParams?.search;
 
+    async function fetchData() {
       if (search === "true") {
         setLoading(true); // Set loading to true while fetching data
         const response = await generateImage({
           number: Number(number),
           prompt: searchParams.prompt,
         });
+        console.log(response);
         setImages((response as []) || []);
         setLoading(false); // Set loading to false after data is fetched
       }
