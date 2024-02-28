@@ -35,12 +35,16 @@ const Header = () => {
             <li className="p-2 text-white  rounded-xl text-center flex gap-1 border-purple-700 border-2">
               <IoPersonCircleSharp className="" size={25} /> Login
             </li>
-            <li className="p-2 text-white  rounded-xl text-center sm:flex gap-1 border-purple-700 border-2 hidden">
-              <FaDollarSign size={21} color="yellow" /> Pricing
-            </li>
-            <li className="p-2 bg-purple-600 text-white  rounded-xl text-center sm:flex gap-2 hidden">
-              <FaCrown color="gold" size={23} /> Premium
-            </li>
+            <Link href={"/pricing"}>
+              <li className="p-2 text-white  rounded-xl text-center sm:flex gap-1 border-purple-700 border-2 hidden">
+                <FaDollarSign size={21} color="yellow" /> Pricing
+              </li>
+            </Link>
+            <Link href={"/premium"}>
+              <li className="p-2 bg-purple-600 text-white  rounded-xl text-center sm:flex gap-2 hidden">
+                <FaCrown color="gold" size={23} /> Premium
+              </li>
+            </Link>
           </ul>
         </div>
       </div>
