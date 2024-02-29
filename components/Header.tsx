@@ -11,9 +11,9 @@ const almendra = Almendra({
 });
 const Header = () => {
   return (
-    <nav className="  p-3 sticky top-0 z-50 max-w-screen-2xl  rounded-xl mt-4   mx-auto bg-black/10 backdrop-blur-lg">
+    <nav className=" px-3 sticky top-0 z-50 max-w-screen-2xl  rounded-xl mt-4   mx-auto bg-black/10 backdrop-blur-lg">
       <div className="flex justify-between">
-        <div className="flex gap-5 ">
+        <div className="flex ">
           <Link href={"/"} className="flex gap-4">
             <Image
               src={"/logo.png"}
@@ -30,23 +30,24 @@ const Header = () => {
             </h1>
           </Link>
         </div>
-        <div>
-          <ul className="flex gap-5">
-            <li className="p-2 text-white  rounded-xl text-center flex gap-1 border-purple-700 border-2">
-              <IoPersonCircleSharp className="" size={25} /> Login
+
+        <ul className="flex justify-between gap-5 ">
+          <li className="p-2 text-white  rounded-xl text-center flex gap-1 md:border-purple-700 md:border-2">
+            <IoPersonCircleSharp className="" size={25} />{" "}
+            <p className="hidden md:block">Login</p>
+          </li>
+          <Link href={"/pricing"}>
+            <li className="p-2 text-white  rounded-xl text-center flex gap-1 md:border-purple-700 md:border-2 ">
+              <FaDollarSign size={21} color="yellow" />{" "}
+              <p className="hidden md:block">Pricing</p>
             </li>
-            <Link href={"/pricing"}>
-              <li className="p-2 text-white  rounded-xl text-center sm:flex gap-1 border-purple-700 border-2 hidden">
-                <FaDollarSign size={21} color="yellow" /> Pricing
-              </li>
-            </Link>
-            <Link href={"/premium"}>
-              <li className="p-2 bg-purple-600 text-white  rounded-xl text-center sm:flex gap-2 hidden">
-                <FaCrown color="gold" size={23} /> Premium
-              </li>
-            </Link>
-          </ul>
-        </div>
+          </Link>
+          <Link href={"/premium"}>
+            <li className="p-2 bg-purple-600 text-white  rounded-xl text-center sm:flex gap-2 hidden">
+              <FaCrown color="gold" size={23} /> Premium
+            </li>
+          </Link>
+        </ul>
       </div>
     </nav>
   );
