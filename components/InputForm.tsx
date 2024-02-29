@@ -45,7 +45,7 @@ const InputForm = ({ setImage, setLoading, setError }: props) => {
         model: "dall-e-3",
         prompt: form.prompt,
         n: 1, // The number of images to generate
-        quality: "hd",
+        quality: "standard",
         style: "natural",
 
         size: "1024x1024",
@@ -54,8 +54,11 @@ const InputForm = ({ setImage, setLoading, setError }: props) => {
       setImage(data[0].url as string);
       setLoading(false);
     } catch (error: any) {
-      console.log(error.message);
+      if (error.message.includes("Billing hard limit has been reached")) {
+        error.message = "Your free limit has been reached.";
+      }
       setError(error.message);
+      setLoading(false);
     }
   };
   // useEffect(() => {

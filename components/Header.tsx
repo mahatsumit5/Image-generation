@@ -11,7 +11,7 @@ const almendra = Almendra({
 });
 const Header = () => {
   return (
-    <nav className=" px-3 sticky top-0 z-50 max-w-screen-2xl  rounded-xl mt-4   mx-auto bg-black/10 backdrop-blur-lg">
+    <nav className=" px-3 py-5 sticky top-0 z-50 max-w-screen-2xl  rounded-xl    mx-auto bg-black/10 backdrop-blur-lg">
       <div className="flex justify-between">
         <div className="flex ">
           <Link href={"/"} className="flex gap-4">
