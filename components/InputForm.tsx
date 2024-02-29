@@ -27,9 +27,10 @@ const InputForm = ({ setImage, setLoading, setError }: props) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   }
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
     setLoading(true);
-    ("use server");
+
     const { status, message, data } = await generateImage({
       prompt: form.prompt,
     });
@@ -60,7 +61,7 @@ const InputForm = ({ setImage, setLoading, setError }: props) => {
   //   replace(`${pathname}?${params.toString()}`);
   // }, [search]);
   return (
-    <div className="mt-2 flex flex-col gap-2">
+    <form className="mt-2 flex flex-col gap-2" onSubmit={handleSubmit}>
       <span className="w-full flex gap-3 flex-col sm:flex-row">
         <textarea
           className="p-2 rounded-md bg-blue-950 w-full   placeholder:text-gray-600 resize-none focus:outline-purple-500"
@@ -74,12 +75,12 @@ const InputForm = ({ setImage, setLoading, setError }: props) => {
 
       <button
         className="px-7 py-2 rounded-lg bg-gradient-to-l from-purple-950  via-pink-900 to-blue-950 font-bold w-full sm:w-[250px] disabled:cursor-not-allowed"
-        onClick={handleSubmit}
+        type="submit"
         disabled={!form.prompt}
       >
         Generate
       </button>
-    </div>
+    </form>
   );
 };
 
