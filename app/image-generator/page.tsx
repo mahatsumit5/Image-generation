@@ -52,14 +52,14 @@ function Page({ searchParams }: any) {
             </Skeleton>
           </div> // Render loading indicator while data is being fetched
         ) : (
-          <div className="w-full h-[50vh] flex  rounded-md relative">
+          <div className="w-full h-[70vh] flex  rounded-md relative">
             {image && (
               <Link href={image}>
                 <Image
                   src={image}
                   alt="image"
                   fill
-                  className={`object-cover}`}
+                  className={`object-contain}`}
                   loading="lazy"
                 />
               </Link>

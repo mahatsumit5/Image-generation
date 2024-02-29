@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { generateImage } from "@/util";
+import OpenAI from "openai";
 type props = {
   setImage: Dispatch<SetStateAction<string>>;
   setLoading: Dispatch<SetStateAction<boolean>>;
@@ -30,17 +31,32 @@ const InputForm = ({ setImage, setLoading, setError }: props) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
+    const apikey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
+    try {
+      if (!form.prompt) {
+        throw new Error("prompt  is required");
+      }
+      const openai = new OpenAI({
+        apiKey: apikey,
+        dangerouslyAllowBrowser: true,
+      });
 
-    const { status, message, data } = await generateImage({
-      prompt: form.prompt,
-    });
-    setLoading(false);
-    if (status) {
-      setImage(data.url);
-    } else {
-      setError(message);
+      const { data } = await openai.images.generate({
+        model: "dall-e-3",
+        prompt: form.prompt,
+        n: 1, // The number of images to generate
+        quality: "hd",
+        style: "natural",
+
+        size: "1024x1024",
+      });
+      console.log(data);
+      setImage(data[0].url as string);
+      setLoading(false);
+    } catch (error: any) {
+      console.log(error.message);
+      setError(error.message);
     }
-    console.log(data);
   };
   // useEffect(() => {
   //   setTimeout(() => {

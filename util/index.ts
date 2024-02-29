@@ -5,7 +5,6 @@ export type params = {
   prompt: string;
 };
 export const generateImage = async (form: params) => {
-  console.log(process.env.OPENAI_API_KEY);
   try {
     if (!form.prompt) {
       throw new Error("prompt  is required");
